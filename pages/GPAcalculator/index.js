@@ -1,5 +1,14 @@
-import {useEffect,useState} from 'react';
-import axios from 'axios'
+import CourseForm from "./components/CourseForm";
+import { createContext, useEffect, useReducer, useState } from "react";
+import CourseLists from "./components/CourseLists";
+import CourseGrade from "./components/CourseGrade";
+import { initialState, reducer } from "./utils/course-reducer";
+import Grid from '@material-ui/core/Grid';
+import Card from '@material-ui/core/Card';
+import Paper from '@material-ui/core/Paper';
+import GridList from '@material-ui/core/GridList';
+import GridListTile from '@material-ui/core/GridListTile';
+// import ParticlesBg from 'particles-bg'
 import Link from "next/link";
 import MenuIcon from '@material-ui/icons/Menu';
 import clsx from 'clsx';
@@ -20,12 +29,23 @@ import ListItemText from '@material-ui/core/ListItemText';
 import InboxIcon from '@material-ui/icons/MoveToInbox';
 import MailIcon from '@material-ui/icons/Mail';
 
-
+export const CourseContext = createContext({});
 const drawerWidth = 240;
 
 const useStyles = makeStyles((theme) => ({
   root: {
+    '& > *': {
+      margin: theme.spacing(1),
+      width: '25ch',
+    },
     display: 'flex',
+  },
+  form: {
+    maxWidth: 275,
+  },
+  gridList: {
+    width: 300,
+    height: 600,
   },
   appBar: {
     transition: theme.transitions.create(['margin', 'width'], {
@@ -80,11 +100,22 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const baseURL = 'https://dummyapi.io/data/api'
-
-const Home = () => {
-
+function App() {
   const classes = useStyles();
+
+  const [state, dispatch] = useReducer(reducer, initialState);
+
+  //fetch course from localstroage
+  function fetchCourse() {
+    const localCourse = localStorage.getItem("myCourse");
+    if (localCourse) {
+      dispatch({
+        type: "SET_COURSE",
+        payload: JSON.parse(localCourse),
+      });
+    }
+  }
+  
   const theme = useTheme();
   const [open, setOpen] = useState(false);
 
@@ -95,10 +126,19 @@ const Home = () => {
   const handleDrawerClose = () => {
     setOpen(false);
   };
+  //use function fetchCourse() when page refresh and rendered
+  useEffect(fetchCourse, []);
+
+  useEffect(() => {
+    localStorage.setItem("myCourse", JSON.stringify(state.myCourse));
+  }, [state.myCourse]); //run when state.myCourse change
+
 
   return (
-    <>
-    <CssBaseline />
+    <CourseContext.Provider value={{ state, dispatch }}>
+      <div >
+      {/* <ParticlesBg color="#ffffff" num={150} type="cobweb" bg={true}/> */}
+      <CssBaseline />
       <AppBar
         position="fixed"
         className={clsx(classes.appBar, {
@@ -116,7 +156,7 @@ const Home = () => {
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" noWrap>
-            Home Page
+            GPA Calculator
           </Typography>
         </Toolbar>
       </AppBar>
@@ -136,17 +176,24 @@ const Home = () => {
         </div>
         <Divider />
         <List>
-          <ListItem button>
+        <ListItem button>
+          <ListItemIcon><InboxIcon /></ListItemIcon>
+          
+          <Link href={'../'}>
+            <h3 className="MainPageLink">MAIN</h3>
+          </Link>
+        </ListItem>
+            <ListItem button>
               <ListItemIcon><InboxIcon /></ListItemIcon>
               
-              <Link href={'./portfolio'}>
+              <Link href={'../portfolio'}>
                 <h3 className="MainPageLink">PORTFOLIO</h3>
               </Link>
             </ListItem>
           <ListItem button>
               <ListItemIcon><InboxIcon /></ListItemIcon>
               
-              <Link href={'./post'}>
+              <Link href={'../post'}>
                 <h3 className="MainPageLink">DUMMY API</h3>
               </Link>
             </ListItem>
@@ -158,24 +205,18 @@ const Home = () => {
             <ListItem button>
               <ListItemIcon><InboxIcon /></ListItemIcon>
               
-              <Link href={'./portfolio/gallery'}>
+              <Link href={'../portfolio/gallery'}>
                 <h3 className="MainPageLink">GALLERY</h3>
               </Link>
             </ListItem>
             <ListItem button>
               <ListItemIcon><InboxIcon /></ListItemIcon>
               
-              <Link href={'./portfolio/contact'}>
+              <Link href={'../portfolio/contact'}>
                 <h3 className="MainPageLink">CONTACT</h3>
               </Link>
             </ListItem>
-            <ListItem button>
-              <ListItemIcon><InboxIcon /></ListItemIcon>
-              
-              <Link href={'./GPAcalculator'}> 
-                <h3 className="MainPageLink">GPA CALCULATOR</h3>
-              </Link>
-            </ListItem>
+            
         </List>
       </Drawer>
       <main
@@ -183,26 +224,42 @@ const Home = () => {
           [classes.contentShift]: open,
         })}
       ></main>
-    <div>
-      <div className="header">
-        <MenuIcon color="primary"/>
-        
-        <h1 className="header-txt">HOME PAGE</h1>
+      <br></br>
+      <br></br>
+      <br></br>
+        {/* <h1 class="glow">
+          GPA CALCULATOR
+        </h1> */}
+          <Grid container spacing={2}>
+            <Grid item xs={12} sm={6}>
+              <div align="center">
+                <Card variant="outlined" className={classes.form}>
+                  <Paper  elevation={3} />
+                  <CourseForm courses={state.myCourse}/>
+                </Card>
+                <br/>
+                <Card variant="outlined" className={classes.form}>
+                  <Paper elevation={3} />
+                <CourseGrade courses={state.myCourse}/>
+                </Card>
+              </div>
+
+            </Grid>
+            <Grid item xs={12} sm={6}>
+              
+              <GridList style={{paddingLeft:25}} className={classes.gridList}>
+                <GridListTile key="Subheader" cols={2} style={{ height: 100 }}>
+                  <h3 class="small-glow">My courses</h3>
+                </GridListTile>
+                <CourseLists courses={state.myCourse} />
+              </GridList>
+            
+            </Grid>
+          </Grid>
+          
       </div>
-      <div className="MainPageTemplate">
-        <Link href={'./portfolio'}>
-          <h1 className="MainPageLink">PORTFOLIO</h1>
-          </Link>
-        <Link href={'./post'}>
-          <h1 className="MainPageLink">DUMMY API</h1>
-          </Link>
-        <Link href={'./GPAcalculator'}> 
-          <h1 className="MainPageLink">GPA CALCULATOR</h1>
-          </Link>
-      </div>
-    </div>
-    </>
-  )
+    </CourseContext.Provider>
+  );
 }
 
-export default Home
+export default App;

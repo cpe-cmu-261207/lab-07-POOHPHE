@@ -1,6 +1,6 @@
-import {useEffect,useState} from 'react';
-import axios from 'axios'
 import Link from "next/link";
+import Paper from '@material-ui/core/Paper';
+import Grid from '@material-ui/core/Grid';
 import MenuIcon from '@material-ui/icons/Menu';
 import clsx from 'clsx';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
@@ -19,8 +19,7 @@ import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import InboxIcon from '@material-ui/icons/MoveToInbox';
 import MailIcon from '@material-ui/icons/Mail';
-
-
+import {useEffect,useState} from 'react';
 const drawerWidth = 240;
 
 const useStyles = makeStyles((theme) => ({
@@ -79,26 +78,23 @@ const useStyles = makeStyles((theme) => ({
     marginLeft: 0,
   },
 }));
+function Gallery(){
+    const classes = useStyles();
+    const theme = useTheme();
+    const [open, setOpen] = useState(false);
+  
+    const handleDrawerOpen = () => {
+      setOpen(true);
+    };
+  
+    const handleDrawerClose = () => {
+      setOpen(false);
+    };
 
-const baseURL = 'https://dummyapi.io/data/api'
-
-const Home = () => {
-
-  const classes = useStyles();
-  const theme = useTheme();
-  const [open, setOpen] = useState(false);
-
-  const handleDrawerOpen = () => {
-    setOpen(true);
-  };
-
-  const handleDrawerClose = () => {
-    setOpen(false);
-  };
-
-  return (
-    <>
-    <CssBaseline />
+    return (
+        
+        <div className={classes.root}>
+            <CssBaseline />
       <AppBar
         position="fixed"
         className={clsx(classes.appBar, {
@@ -116,7 +112,7 @@ const Home = () => {
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" noWrap>
-            Home Page
+            Gallery
           </Typography>
         </Toolbar>
       </AppBar>
@@ -136,17 +132,24 @@ const Home = () => {
         </div>
         <Divider />
         <List>
-          <ListItem button>
+        <ListItem button>
+          <ListItemIcon><InboxIcon /></ListItemIcon>
+          
+          <Link href={'../'}>
+            <h3 className="MainPageLink">MAIN</h3>
+          </Link>
+        </ListItem>
+            <ListItem button>
               <ListItemIcon><InboxIcon /></ListItemIcon>
               
-              <Link href={'./portfolio'}>
+              <Link href={'./'}>
                 <h3 className="MainPageLink">PORTFOLIO</h3>
               </Link>
             </ListItem>
           <ListItem button>
               <ListItemIcon><InboxIcon /></ListItemIcon>
               
-              <Link href={'./post'}>
+              <Link href={'../post'}>
                 <h3 className="MainPageLink">DUMMY API</h3>
               </Link>
             </ListItem>
@@ -155,24 +158,18 @@ const Home = () => {
         <List>
           
             
+            
             <ListItem button>
               <ListItemIcon><InboxIcon /></ListItemIcon>
               
-              <Link href={'./portfolio/gallery'}>
-                <h3 className="MainPageLink">GALLERY</h3>
-              </Link>
-            </ListItem>
-            <ListItem button>
-              <ListItemIcon><InboxIcon /></ListItemIcon>
-              
-              <Link href={'./portfolio/contact'}>
+              <Link href={'./contact'}>
                 <h3 className="MainPageLink">CONTACT</h3>
               </Link>
             </ListItem>
             <ListItem button>
               <ListItemIcon><InboxIcon /></ListItemIcon>
               
-              <Link href={'./GPAcalculator'}> 
+              <Link href={'../GPAcalculator'}> 
                 <h3 className="MainPageLink">GPA CALCULATOR</h3>
               </Link>
             </ListItem>
@@ -183,26 +180,8 @@ const Home = () => {
           [classes.contentShift]: open,
         })}
       ></main>
-    <div>
-      <div className="header">
-        <MenuIcon color="primary"/>
-        
-        <h1 className="header-txt">HOME PAGE</h1>
-      </div>
-      <div className="MainPageTemplate">
-        <Link href={'./portfolio'}>
-          <h1 className="MainPageLink">PORTFOLIO</h1>
-          </Link>
-        <Link href={'./post'}>
-          <h1 className="MainPageLink">DUMMY API</h1>
-          </Link>
-        <Link href={'./GPAcalculator'}> 
-          <h1 className="MainPageLink">GPA CALCULATOR</h1>
-          </Link>
-      </div>
-    </div>
-    </>
-  )
+        <h2 color={'white'}>gal</h2>
+        </div>
+    )
 }
-
-export default Home
+export default Gallery;

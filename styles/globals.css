@@ -4,6 +4,7 @@ body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  background-image: url('https://i.pinimg.com/originals/d3/ac/55/d3ac555effe094dd590384293267349f.png');
 }
 
 a {
@@ -13,4 +14,69 @@ a {
 
 * {
   box-sizing: border-box;
+}
+
+
+
+/* body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-size: cover;
+  animation:bgc 7s linear 0s infinite alternate;
+}*/
+
+
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+
+#err{
+  color: red;
+  font-size: 14px;
+}
+#center{
+  text-align: center;
+}
+
+
+.glow {
+  font-size: 40px;
+  color: #fff;
+  text-align: center;
+  -webkit-animation: glow 1s ease-in-out infinite alternate;
+  -moz-animation: glow 1s ease-in-out infinite alternate;
+  animation: glow 1s ease-in-out infinite alternate;
+}
+
+@keyframes glow {
+  from {
+    text-shadow: 0 0 10px #fff, 0 0 20px rgb(109, 12, 27), 0 0 30px #dd226a, 0 0 40px #8f103a, 0 0 50px #972743, 0 0 60px #c93b76, 0 0 70px #ff2e6d;
+  }
+  to {
+    text-shadow: 0 0 20px #fff, 0 0 30px #fa73ff, 0 0 40px #ff7af4, 0 0 50px #7f0ca1, 0 0 60px #a00493, 0 0 70px #b80c92, 0 0 80px #ac09a3;
+  }
+}
+.small-glow {
+  font-size: 30px;
+  color: rgb(255, 255, 255);
+  text-align: center;
+  -webkit-animation: small-glow 1s ease-in-out infinite alternate;
+  -moz-animation: small-glow 1s ease-in-out infinite alternate;
+  animation: small-glow 1s ease-in-out infinite alternate;
+}
+
+@keyframes small-glow {
+  from {
+    text-shadow: 0 0 20px #fff, 0 0 20px #fa73ff, 0 0 20px #ff7af4, 0 0 20px #7f0ca1, 0 0 20px #a00493, 0 0 10px #b80c92, 0 0 20px #ac09a3;
+  }
+  to {
+    text-shadow: 0 0 10px #fff, 0 0 20px rgb(109, 12, 27), 0 0 10px #dd226a, 0 0 20px #8f103a, 0 0 30px #972743, 0 0 20px #c93b76, 0 0 10px #ff2e6d;
+  }
 }
