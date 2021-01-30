@@ -180,7 +180,42 @@ function Contact(){
           [classes.contentShift]: open,
         })}
       ></main>
-        <h2 color={'white'}>gal</h2>
+      <br></br>
+      <br></br>
+      <br></br>
+      <br></br>
+      <br></br>
+      <div style={{margin:'auto',width:'500px'}}>
+
+        <form  style={{backgroundColor:"lightblue"}}>
+            <div >
+              <div >
+                <label for="name">Your Name </label>
+                <input type="text"  id="name"/>
+              </div>
+              <div>
+                  <label for="email">Your Email </label>
+                  <input type="email" id="email" />      
+              </div>
+            </div>
+            <div >
+            <div >
+                <label for="subject">Subject </label>
+                <input type="text" class="form-control" id="subject"/>
+              </div>
+            </div>
+            
+            <div >
+                <label for="exampleFormControlTextarea1">Your Message</label>
+                <textarea  id="exampleFormControlTextarea1" rows="3">Hello</textarea>
+              </div>
+              <div style={{textAlign:"center"}} >
+              <button type="submit" >SEND</button>
+              
+
+                </div>
+          </form> 
+      </div>
         </div>
     )
 }

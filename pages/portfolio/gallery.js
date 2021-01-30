@@ -20,6 +20,14 @@ import ListItemText from '@material-ui/core/ListItemText';
 import InboxIcon from '@material-ui/icons/MoveToInbox';
 import MailIcon from '@material-ui/icons/Mail';
 import {useEffect,useState} from 'react';
+import Switch from '@material-ui/core/Switch';
+import Fade from '@material-ui/core/Fade';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import { Input } from "@material-ui/core";
+
+
+
+
 const drawerWidth = 240;
 
 const useStyles = makeStyles((theme) => ({
@@ -76,13 +84,29 @@ const useStyles = makeStyles((theme) => ({
       duration: theme.transitions.duration.enteringScreen,
     }),
     marginLeft: 0,
+  },container: {
+    display: 'flex',
+  },
+  paper: {
+    alignItems:'center',
+    maxWidth:'400px',
+    margin: theme.spacing(1),
+  },img: {
+    margin: 'auto',
+    display: 'block',
+    maxWidth: '200px',
+   
   },
 }));
 function Gallery(){
     const classes = useStyles();
     const theme = useTheme();
     const [open, setOpen] = useState(false);
-  
+    const [checked, setChecked] = useState(false);
+
+    const handleChange = () => {
+      setChecked((prev) => !prev);
+    };
     const handleDrawerOpen = () => {
       setOpen(true);
     };
@@ -180,7 +204,69 @@ function Gallery(){
           [classes.contentShift]: open,
         })}
       ></main>
-        <h2 color={'white'}>gal</h2>
+        <br></br>
+        <br></br>
+        <br></br>
+        <br></br>
+        
+        <div style={{margin:'auto',width:'100px',textAlign:"center"}}>
+          <Paper>
+            <input type="checkbox" id="show" value="Submit" onChange={handleChange}/>
+            <label for="show" style={{fontSize:'20px'}}> Show</label>
+          </Paper>
+          
+        </div>
+        <br></br>
+        <br></br>
+      <div className={classes.container}>
+        <Fade in={checked}>
+          <div>
+            
+          <div style={{margin:"auto",width:"500px"}}>
+            <img  src={'https://wallpaperaccess.com/full/12561.jpg'} style={{width:'200px',margin:'auto'}}/>
+          </div>
+          <div style={{margin:"auto",width:"500px"}}>
+            <img  src={'https://i.pinimg.com/originals/52/e1/4d/52e14d2ca7e872dbb51252506377620b.jpg'} style={{width:'200px',margin:'auto'}}/>
+          </div>
+          <div style={{margin:"auto",width:"500px"}}>
+            <img  src={'https://wallpapercave.com/wp/wp3611699.jpg'} style={{width:'200px',margin:'auto'}}/>
+          </div>
+          <div style={{margin:"auto",width:"500px"}}>
+            <img  src={'https://r1.ilikewallpaper.net/iphone-12-pro-max-wallpapers/download-103428/aurora-constellations-sky-nature-4k.jpg'} style={{width:'200px',margin:'auto'}}/>
+          </div>
+          <div style={{margin:"auto",width:"500px"}}>
+            <img  src={'https://wallpaperaccess.com/full/1182859.jpg'} style={{width:'200px',margin:'auto'}}/>
+          </div>
+          <div style={{margin:"auto",width:"500px"}}>
+            <img  src={'https://149493502.v2.pressablecdn.com/wp-content/uploads/2020/10/iphone-12-blue-wallpaper-light.jpg'} style={{width:'200px',margin:'auto'}}/>
+          </div>
+          <div style={{margin:"auto",width:"500px"}}>
+            <img  src={'https://newevolutiondesigns.com/images/freebies/4k-iphone-wallpaper-1.jpg'} style={{width:'200px',margin:'auto'}}/>
+          </div>
+          <div style={{margin:"auto",width:"500px"}}>
+            <img  src={'https://www.wallpapertip.com/wmimgs/137-1376321_iphone-11-stock-wallpaper-4k.png'} style={{width:'200px',margin:'auto'}}/>
+          </div>
+          <div style={{margin:"auto",width:"500px"}}>
+            <img  src={'https://www.backgroundscool.com/wp-content/uploads/2019/11/dfbbfde86596a6827a13d67a100db594.jpg'} style={{width:'200px',margin:'auto'}}/>
+          </div>
+          <div style={{margin:"auto",width:"500px"}}>
+            <img  src={'https://images.hdqwalls.com/download/ios-11-stock-original-4k-ij-750x1334.jpg'} style={{width:'200px',margin:'auto'}}/>
+          </div>
+          <div style={{margin:"auto",width:"500px"}}>
+            <img  src={'https://all-images.net/wp-content/uploads/2020/06/wallpaper-iphone-designer-312.jpg'} style={{width:'200px',margin:'auto'}}/>
+          </div>
+          <div style={{margin:"auto",width:"500px"}}>
+            <img  src={'https://media.idownloadblog.com/wp-content/uploads/2018/12/snow-winter-car-night-nature-iphone-X.jpg'} style={{width:'200px',margin:'auto'}}/>
+          </div>
+
+          
+          
+        
+          </div>
+        
+          
+        </Fade>
+      </div>
         </div>
     )
 }

@@ -211,7 +211,7 @@ const Post = () => {
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" noWrap>
-            POST: {post.text}
+            Post Detail
           </Typography>
         </Toolbar>
       </AppBar>
@@ -231,7 +231,20 @@ const Post = () => {
         </div>
         <Divider />
         <List>
-            
+        <ListItem button>
+          <ListItemIcon><InboxIcon /></ListItemIcon>
+          
+          <Link href={'../'}>
+            <h3 className="MainPageLink">MAIN</h3>
+          </Link>
+        </ListItem>
+        <ListItem button>
+          <ListItemIcon><InboxIcon /></ListItemIcon>
+          
+          <Link href={'./portfolio/'}>
+            <h3 className="MainPageLink">PORTFOLIO</h3>
+          </Link>
+        </ListItem>
           <ListItem button>
               <ListItemIcon><InboxIcon /></ListItemIcon>
               
@@ -330,7 +343,20 @@ const Post = () => {
               </div>
               <Divider />
               <List>
-                  
+              <ListItem button>
+          <ListItemIcon><InboxIcon /></ListItemIcon>
+          
+          <Link href={'../'}>
+            <h3 className="MainPageLink">MAIN</h3>
+          </Link>
+        </ListItem>
+              <ListItem button>
+          <ListItemIcon><InboxIcon /></ListItemIcon>
+          
+          <Link href={'./portfolio/'}>
+            <h3 className="MainPageLink">PORTFOLIO</h3>
+          </Link>
+        </ListItem>
                 <ListItem button>
                     <ListItemIcon><InboxIcon /></ListItemIcon>
                     

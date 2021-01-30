@@ -8,7 +8,7 @@ import Card from '@material-ui/core/Card';
 import Paper from '@material-ui/core/Paper';
 import GridList from '@material-ui/core/GridList';
 import GridListTile from '@material-ui/core/GridListTile';
-// import ParticlesBg from 'particles-bg'
+import ParticlesBg from 'particles-bg'
 import Link from "next/link";
 import MenuIcon from '@material-ui/icons/Menu';
 import clsx from 'clsx';

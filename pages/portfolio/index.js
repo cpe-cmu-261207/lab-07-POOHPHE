@@ -32,6 +32,8 @@ const useStyles = makeStyles((theme) => ({
       padding: theme.spacing(2),
       textAlign: 'center',
       color: theme.palette.text.secondary,
+      maxWidth:'900px',
+      margin:"auto"
     },
     img: {
         margin: 'auto',
@@ -108,6 +110,7 @@ function Profile(){
     return (
         
         <div className={classes.root}>
+         
             <CssBaseline />
       <AppBar
         position="fixed"
@@ -126,7 +129,7 @@ function Profile(){
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" noWrap>
-            Home Page
+            Portfolio
           </Typography>
         </Toolbar>
       </AppBar>
@@ -194,22 +197,37 @@ function Profile(){
         })}
       ></main>
             <br></br>
-        <Grid container spacing={3}>
-           
-           <Grid item xs={12} sm={6}>
-                <Paper className={classes.paper}>
-                    <img className={classes.img} src={'https://cpe-cmu-261207.github.io/lab-02-POOHPHE/profile.jpg'} alt="Profile" />
-                </Paper>
-           </Grid>
-           <Grid item xs={12} sm={6}>
-               <Paper className={classes.paper}>xs</Paper>
-           </Grid>
-       </Grid>
+            <br></br>
+            <br></br>
+            <div style={{margin:"auto",width:"500px"}}>
+         
+              <Paper className={classes.paper}>
+                  <img className={classes.img} src={'https://cpe-cmu-261207.github.io/lab-02-POOHPHE/profile.jpg'}  alt="Profile" />
+              </Paper>
+                      
+            </div>
+        
+
        <br></br>
        <Grid container spacing={3}>
            
-          
-           
+          <Grid item xs={12} >
+               <Paper className={classes.paper}><h2>Pherawat Wongsawad</h2></Paper>
+           </Grid>
+           <Grid item xs={12} >
+               <Paper className={classes.paper}><h2>Chiang Mai university</h2>
+               </Paper>
+           </Grid>
+           <Grid item xs={12} >
+               <Paper className={classes.paper}><h2>Skills</h2>
+               <p>About Computer</p>
+               </Paper>
+           </Grid>
+           <Grid item xs={12} >
+               <Paper className={classes.paper}><h2>Experience</h2>
+               <p>About 20 years old since I was born</p>
+               </Paper>
+           </Grid>
        </Grid>
    </div>
         )

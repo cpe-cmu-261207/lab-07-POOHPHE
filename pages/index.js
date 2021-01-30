@@ -185,20 +185,15 @@ const Home = () => {
       ></main>
     <div>
       <div className="header">
-        <MenuIcon color="primary"/>
         
-        <h1 className="header-txt">HOME PAGE</h1>
       </div>
-      <div className="MainPageTemplate">
-        <Link href={'./portfolio'}>
-          <h1 className="MainPageLink">PORTFOLIO</h1>
-          </Link>
-        <Link href={'./post'}>
-          <h1 className="MainPageLink">DUMMY API</h1>
-          </Link>
-        <Link href={'./GPAcalculator'}> 
-          <h1 className="MainPageLink">GPA CALCULATOR</h1>
-          </Link>
+      <br></br>
+      <br></br>
+      <br></br>
+      <br></br>
+      <br></br>
+      <div className="MainPageTemplate" style={{width:"500px"}}>
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRsA8s4OPFkr_ARwWv9Ohb3dSwaRXMwRXLRFg&usqp=CAU"/>
       </div>
     </div>
     </>
