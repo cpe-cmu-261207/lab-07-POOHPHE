@@ -37,7 +37,7 @@ const drawerWidth = 240;
 const useStyles = makeStyles((theme) => ({
     root: {
       flexGrow: 1,
-      maxWidth: 345,
+      maxWidth: 400,
     },
     paper: {
       padding: theme.spacing(2),
